@@ -1,5 +1,10 @@
+import number.game.NumberGameModel;
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        NumberGameModel model = new NumberGameModel(1,100,10);
+        model.generateRandomNumber();
+        System.out.println(model.getTargetNumber()+"Hello world!");
+
+
     }
 }

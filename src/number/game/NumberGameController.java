@@ -9,9 +9,9 @@ public class NumberGameController {
     }
 
     public void startNewRounds() {
-        model.setRoundsWon(0);
+      //  model.setRoundsWon(0);
         model.setCurrentAttempts(0);
-        model.generateRandomNumber(1,100);
+        model.generateRandomNumber();
         view.updateUI("Enter a number between 1 to 100.");
     }
 
@@ -23,23 +23,20 @@ public class NumberGameController {
         }
 
         int userGuess = view.getUserGuess();
+        System.out.println(userGuess+" userGuess");
         if (userGuess == -1) {
             view.updateUI("Invalid input. Please enter a number.");
-        } else {
+        }else if (userGuess>model.getMax() || userGuess< model.getMin()) {
+            view.updateUI("Invalid input. Out of the range.");
+        }else {
             model.incrementAttempts();
             if (userGuess == model.getTargetNumber()) {
                 view.displayMessage("Congratulations! You guessed the correct number : "+ model.getTargetNumber());
-                model.incrementRoundsWon();
             } else if (userGuess < model.getTargetNumber()) {
                 view.updateUI("Your guess is too low. Try again.");
             } else {
                 view.updateUI("Your guess is too high. Try again.");
             }
-/*
-            if (model.isGameOver()) {
-                view.displayMessage("Game Over! The correct number was " + model.getTargetNumber());
-            }
- */
         }
     }
 

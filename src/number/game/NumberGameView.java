@@ -91,6 +91,5 @@ public class NumberGameView implements ActionListener {
             controller.startNewRounds();
         }
 
-      //  JOptionPane.showMessageDialog(frame, message);
     }
 }
